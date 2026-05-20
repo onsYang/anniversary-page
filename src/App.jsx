@@ -5,37 +5,37 @@ const timeline = [
   {
     date: "2024.05",
     title: "万柳：图书馆，午后和暴雨",
-    photos: ["/photos/2024_5.jpg"],
+    photos: ["photos/2024_5.jpg"],
   },
   {
     date: "2024.08",
     title: "呼市：超市，傍晚和慢悠悠的散步",
-    photos: ["/photos/2024_8.jpg"],
+    photos: ["photos/2024_8.jpg"],
   },
   {
     date: "2025.02",
     title: "上海：迪士尼的牛警长和冰雪公主",
-    photos: ["/photos/2025_3.jpg"],
+    photos: ["photos/2025_3.jpg"],
   },
   {
     date: "2025.05",
     title: "呼市：花与一周年",
-    photos: ["/photos/2025_5.jpg"],
+    photos: ["photos/2025_5.jpg"],
   },
   {
     date: "2025.06",
     title: "首尔：小韩的精致生活",
-    photos: ["/photos/2025_6.jpg"],
+    photos: ["photos/2025_6.jpg"],
   },
   {
     date: "2025.07",
     title: "毕业季和新生活",
-    photos: ["/photos/2025_7_num1.jpg", "/photos/2025_7_num2.JPG"],
+    photos: ["photos/2025_7_num1.jpg", "photos/2025_7_num2.JPG"],
   },
   {
     date: "2025.12",
     title: "miss can over distance",
-    photos: ["/photos/2025_12_num1.JPG", "/photos/2025_12_num2.jpg"],
+    photos: ["photos/2025_12_num1.JPG", "photos/2025_12_num2.jpg"],
   },
 ];
 
@@ -62,7 +62,7 @@ function MusicButton() {
 
   return (
     <>
-      <audio ref={audioRef} src="/music/Background.m4a" loop />
+      <audio ref={audioRef} src="music/Background.m4a" loop />
       <button className="musicButton" onClick={toggleMusic}>
         <span className="musicIcon">{isPlaying ? "❚❚" : "▶"}</span>
         <span>{isPlaying ? "Playing your song" : "Play the song I sang"}</span>
@@ -195,7 +195,7 @@ function App() {
       <MusicButton />
 
       <section className="hero">
-          <img className="heroImage" src="/photos/2025_12_num1.JPG" alt="Cover" />
+          <img className="heroImage" src="photos/2025_12_num1.JPG" alt="Cover" />
         <div className="heroOverlay" />
         <div className="heroSideOverlay" />
 
