@@ -1,0 +1,667 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Serif SC", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+  background: #130b10;
+  color: #fff8f4;
+}
+
+button {
+  font-family: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(255, 156, 184, 0.22), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(144, 179, 255, 0.16), transparent 28%),
+    #130b10;
+}
+
+/* Music */
+
+.musicButton {
+  position: fixed;
+  z-index: 50;
+  top: 24px;
+  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  padding: 12px 18px;
+  cursor: pointer;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.musicButton:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.musicIcon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+  object-fit: cover;
+  transform: scale(1.05);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(19, 11, 16, 0.12),
+    rgba(19, 11, 16, 0.38),
+    rgba(19, 11, 16, 0.8)
+  );
+}
+
+.heroSideOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(19, 11, 16, 0.5),
+    transparent 70%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  padding-bottom: 78px;
+  animation: fadeUp 1s ease both;
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  color: #ffb5c8;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(64px, 10vw, 140px);
+  line-height: 0.86;
+  letter-spacing: -0.09em;
+  font-weight: 700;
+  font-family: "Georgia", serif;
+  color: #fff8f4;
+}
+
+.heroText {
+  max-width: 690px;
+  margin-top: 30px;
+  color: rgba(255, 248, 244, 0.82);
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.55;
+}
+
+.scrollHint {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 248, 244, 0.75);
+  font-size: 14px;
+}
+
+.bounce {
+  display: inline-block;
+  animation: bounce 1.5s infinite;
+}
+
+/* Intro */
+
+.timelineIntro {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 110px 0 48px;
+}
+
+.timelineIntro h2 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(42px, 6vw, 86px);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+  color: #fff8f4;
+  font-family: "Georgia", serif;
+}
+
+.timelineIntro p:not(.eyebrow) {
+  max-width: 760px;
+  margin-top: 26px;
+  color: rgba(255, 248, 244, 0.68);
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+/* Timeline */
+
+.timeline {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+.timelineItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 52px;
+  padding: 70px 0;
+}
+
+.timelineDate {
+  text-align: right;
+}
+
+.stickyDate {
+  position: sticky;
+  top: 100px;
+}
+
+.stickyDate h3 {
+  margin: 14px 0 0;
+  color: white;
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.timelineContent {
+  position: relative;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 46px;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -9px;
+  top: 16px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #ffb5c8;
+  box-shadow: 0 0 0 9px rgba(255, 181, 200, 0.13);
+}
+
+.chapterText {
+  max-width: 780px;
+  margin-bottom: 34px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.chapterText h2 {
+  margin: 0;
+  font-size: clamp(24px, 3.5vw, 44px);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+  color: #fff8f4;
+  font-family: "Georgia", serif;
+}
+
+.chapterText p {
+  max-width: 710px;
+  margin-top: 20px;
+  color: rgba(255, 248, 244, 0.7);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.chapterMedia {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 26px;
+}
+
+.chapterMedia.withMap {
+  grid-template-columns: minmax(320px, 0.9fr) minmax(420px, 1.1fr);
+  align-items: stretch;
+}
+
+/* Map */
+
+.mapCard {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: 32px;
+  background: #f5e4d5;
+  border: 1px solid rgba(217, 187, 166, 0.8);
+  color: #2c211c;
+  padding: 26px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+}
+
+.mapGlowOne,
+.mapGlowTwo {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  filter: blur(28px);
+}
+
+.mapGlowOne {
+  left: -90px;
+  bottom: -50px;
+  background: rgba(200, 112, 96, 0.22);
+}
+
+.mapGlowTwo {
+  right: -90px;
+  top: -60px;
+  background: rgba(141, 166, 217, 0.25);
+}
+
+.mapHeader {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  color: #8a5a45;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.smallHeart {
+  color: #a24b3c;
+  font-size: 20px;
+}
+
+.mapBody {
+  position: relative;
+  z-index: 2;
+  height: 260px;
+  margin-top: 28px;
+}
+
+.city {
+  position: absolute;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.62);
+  padding: 10px 14px;
+  border-radius: 999px;
+  box-shadow: 0 12px 35px rgba(77, 45, 35, 0.14);
+  font-weight: 700;
+}
+
+.cityLeft {
+  left: 8px;
+  top: 58px;
+}
+
+.cityRight {
+  right: 8px;
+  bottom: 54px;
+}
+
+.pin {
+  color: #a24b3c;
+  font-size: 13px;
+}
+
+.mapLine {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: #a24b3c;
+}
+
+.mapHeart {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.74);
+  color: #a24b3c;
+  font-size: 30px;
+  box-shadow: 0 18px 50px rgba(120, 55, 48, 0.25);
+}
+
+/* Carousel */
+
+.carousel {
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 16px;
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+}
+
+.photoFrame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.photoFrame img {
+  display: block;
+  width: 100%;
+  height: 460px;
+  object-fit: contain;
+  animation: imageFade 0.45s ease both;
+}
+
+.photoControls {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+}
+
+.photoCount {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+}
+
+.arrowButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.arrowButtons button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: white;
+  background: rgba(255, 255, 255, 0.18);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  backdrop-filter: blur(10px);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.arrowButtons button:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.36);
+  cursor: pointer;
+  transition: width 0.25s ease, background 0.25s ease;
+}
+
+.activeDot {
+  width: 34px;
+  background: #ffb5c8;
+}
+
+/* Final letter */
+
+.finalLetter {
+  width: min(980px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 40px 0 140px;
+}
+
+.letterCard {
+  padding: clamp(30px, 6vw, 70px);
+  border-radius: 44px;
+  background: linear-gradient(135deg, #fff7f9, #ffe6ee);
+  color: #2b151c;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.36);
+}
+
+.darkEyebrow {
+  color: #b34e69;
+}
+
+.letterCard h2 {
+  max-width: 820px;
+  margin: 0;
+  font-size: clamp(38px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.06em;
+}
+
+.letterCard p:not(.eyebrow) {
+  max-width: 760px;
+  margin-top: 26px;
+  color: rgba(43, 21, 28, 0.72);
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+.signature {
+  margin-top: 44px;
+  color: #b34e69;
+  font-size: clamp(28px, 5vw, 54px);
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+}
+
+/* Animations */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes imageFade {
+  from {
+    opacity: 0.3;
+    transform: scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 980px) {
+  .hero {
+    padding: 32px 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(62px, 16vw, 110px);
+  }
+
+  .timelineItem {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 56px 0;
+  }
+
+  .timelineDate {
+    text-align: left;
+  }
+
+  .stickyDate {
+    position: relative;
+    top: 0;
+  }
+
+  .timelineContent {
+    padding-left: 30px;
+  }
+
+  .chapterMedia.withMap {
+    grid-template-columns: 1fr;
+  }
+
+  .photoFrame img {
+    height: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .musicButton {
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    justify-content: center;
+    padding: 11px 14px;
+    font-size: 14px;
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding: 24px 20px;
+  }
+
+  .heroContent {
+    padding-bottom: 70px;
+  }
+
+  .hero h1 {
+    font-size: 62px;
+  }
+
+  .heroText {
+    font-size: 17px;
+  }
+
+  .timelineIntro,
+  .timeline,
+  .finalLetter {
+    width: min(100% - 36px, 100%);
+  }
+
+  .timelineIntro {
+    padding-top: 80px;
+  }
+
+  .timelineIntro h2,
+  .chapterText h2,
+  .letterCard h2 {
+    font-size: 40px;
+  }
+
+  .timelineContent {
+    padding-left: 24px;
+  }
+
+  .mapCard {
+    min-height: 310px;
+    padding: 22px;
+  }
+
+  .mapBody {
+    height: 220px;
+  }
+
+  .photoFrame img {
+    height: 320px;
+  }
+
+  .photoControls {
+    padding: 14px;
+  }
+
+  .arrowButtons button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .finalLetter {
+    padding-bottom: 90px;
+  }
+}
