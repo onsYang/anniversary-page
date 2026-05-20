@@ -34,7 +34,7 @@ const timeline = [
   },
   {
     date: "2025.12",
-    title: "miss can over distance",
+    title: "miss can overcome distance",
     photos: ["photos/2025_12_num1.JPG", "photos/2025_12_num2.jpg"],
   },
 ];
